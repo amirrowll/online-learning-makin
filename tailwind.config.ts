@@ -9,7 +9,19 @@ const config: Config = {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        kalamehBlack: ['Kalameh-Black', 'sans-serif'],
+        kalamehBold: ['Kalameh-Bold', 'sans-serif'],
+        kalamehExtraBold: ['Kalameh-ExtraBold', 'sans-serif'],
+        kalamehExtraLight: ['Kalameh-ExtraLight', 'sans-serif'],
+        kalamehLight: ['Kalameh-Light', 'sans-serif'],
+        kalamehMedium: ['Kalameh-Medium', 'sans-serif'],
+        kalamehRegular: ['Kalameh-Regular', 'sans-serif'],
+        kalamehSemiBold: ['Kalameh-SemiBold', 'sans-serif'],
+        kalamehThin: ['Kalameh-Thin', 'sans-serif'],
+      },
+    },
   },
   plugins: [flowbite.plugin()],
 };
