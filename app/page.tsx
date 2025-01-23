@@ -4,7 +4,7 @@ import React from 'react'
 function page() {
   return (
    <Container>
-      <h1>test</h1>
+      <h1>test 2</h1>
    </Container>
   )
 }
