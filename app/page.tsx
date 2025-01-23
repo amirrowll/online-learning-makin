@@ -1,10 +1,12 @@
-import { DarkThemeToggle } from "flowbite-react";
+import Container from '@/components/container/Container'
+import React from 'react'
 
-export default function Home() {
+function page() {
   return (
-    <main className="flex min-h-screen items-center justify-center gap-2 dark:bg-gray-800">
-      <h1 className="text-2xl dark:text-white">Flowbite React + Next.js</h1>
-      <DarkThemeToggle />
-    </main>
-  );
+   <Container>
+      <h1>Page</h1>
+   </Container>
+  )
 }
+
+export default page
