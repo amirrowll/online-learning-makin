@@ -6,7 +6,7 @@ interface ContainerProps {
 
 function Container({ children }: ContainerProps) {
   return (
-    <div>
+    <div className='max-w-[1440px] mx-auto'>
       {children}
     </div>
   );
