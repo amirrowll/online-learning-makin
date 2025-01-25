@@ -10,6 +10,25 @@ interface input {
 
 export default function Navbar() {
 
+    const titleNavbar =[
+        {
+            id :1 ,
+            title : "صفحه اصلی",
+        },
+        {
+            id :2 ,
+            title : "  دوره ها ",
+        },
+        {
+            id :3 ,
+            title : " قوانین و مقررات ",
+        },
+        {
+            id :4 ,
+            title : " درباره ما ",
+        },
+    ]
+
     const form = useForm<input>({})
 
     const {
@@ -22,7 +41,7 @@ export default function Navbar() {
     };
 
     return (
-        <div className='fixed top-0 right-0 left-0 bg-white border-b-[1px]'>
+        <div className='fixed top-0 right-0 left-0 bg-white border-b-[2px] lg:bg-[#F9F9F9]'>
             <div className='flex items-center justify-between py-[14px] lg:py-[8px] px-4 xl:px-[70px] max-w-[1440px] mx-auto'>
 
                 <form className='relative' noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -48,6 +67,15 @@ export default function Navbar() {
                 </div>
 
             </div>
+
+            <div className='hidden lg:flex lg:item-center lg:justify-center lg:gap-12 lg:pb-[14px] lg:block'>
+                {titleNavbar.map(item=>(
+                    <ul key={item.id} >
+                        <li className='text-[20px] font-kalamehSemiBold '>{item.title}</li>
+                    </ul>
+                ))}
+            </div>
+
         </div>
     )
 }
