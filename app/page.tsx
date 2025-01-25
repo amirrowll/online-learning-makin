@@ -1,14 +1,11 @@
 import Container from '@/components/container/Container'
+import Navbar from '@/components/navbar/Navbar'
 import React from 'react'
 
 function page() {
   return (
     <Container>
-     
-     <div>
-      <h1>landing</h1>
-     </div>
-  
+      <Navbar />
     </Container>
   )
 }
