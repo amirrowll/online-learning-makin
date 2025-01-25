@@ -23,6 +23,7 @@ export default function RootLayout({
         <ThemeModeScript />
       </head>
       <body dir="rtl" className={inter.className}>
+        <Navbar/>
         {children}
         
       </body>
