@@ -3,8 +3,13 @@ import { Accordion } from 'flowbite-react'
 import { CiCircleQuestion } from "react-icons/ci"
 import { useState } from 'react'
 
+type EventKey = string | null
+
 export default function Questions() {
-    const [activeKey, setActiveKey] = useState('1') // پنل اول به صورت پیش‌فرض باز است
+    const [activeKey, setActiveKey] = useState<EventKey>('1') 
+    const handleToggle = (eventKey: EventKey) => {
+        setActiveKey(eventKey)
+    }
 
     return (
         <div className="w-full mx-auto p-4 mt-[100px]">
@@ -15,10 +20,11 @@ export default function Questions() {
 
             <div className='flex flex-col md:flex-row gap-8 w-full justify-between items-center'>
                 <div className="w-full md:w-[60%]">
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-">
                         <Accordion
-                            className="[&>button]:text-right border-none flex flex-col gap-4"
-                            alwaysOpen
+                            className="[&>button]:text-right border-none flex  flex-col "
+                            onToggle={handleToggle}
+                            activeKey={activeKey}
                         >
                             <Accordion.Panel eventKey="1">
                                 <Accordion.Title className="text-right text-lg md:text-xl font-kalamehRegular bg-white hover:bg-gray-100 focus:ring-0">
