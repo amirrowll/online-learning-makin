@@ -46,7 +46,7 @@ const FooterLink3 = [
 
 function Footer() {
     return (
-        <footer className="bg-white dark:bg-gray-900">
+        <footer className="bg-[#f9f9f9] dark:bg-gray-900 mt-20 border-t-2" >
             <div className="mx-auto w-full max-w-[1920px]  p-4 py-6 lg:py-8 lg:px-[70px]">
                 <div className="md:flex md:justify-between md:gap-[110px]">
                     <div className="mb-6 md:mb-0">
