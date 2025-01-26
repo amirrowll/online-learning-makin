@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
 import "./globals.css";
 import Footer from "@/components/Footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Flowbite React",
@@ -21,7 +19,7 @@ export default function RootLayout({
       <head>
         <ThemeModeScript />
       </head>
-      <body dir="rtl" className={inter.className}>
+      <body dir="rtl" className="bg-[#f9f9f9]" >
         {children}
         <Footer/>
       </body>
