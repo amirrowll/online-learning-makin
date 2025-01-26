@@ -9,7 +9,7 @@ function page() {
      
 
       <ReviewsSwiper />
-      {/* <Questions/> */}
+      <Questions/>
 
     </Container>
   )
