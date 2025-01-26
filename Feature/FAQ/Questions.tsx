@@ -31,7 +31,7 @@ export default function Questions() {
                                         onClick={() => handleToggle('1')}
                                         aria-expanded={activeKey === '1'}
                                     >
-                                        <span>
+                                        <span className="text-xl font-kalamehRegular text-black">
                                             نحوه آموزش در مکین چگونه است؟
                                         </span>
                                         <svg
@@ -58,7 +58,7 @@ export default function Questions() {
                                         }`}
                                     aria-labelledby="accordion-collapse-heading-1"
                                 >
-                                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
                                         دوره‌های آکادمی مکین تنها به صورت ویدئوهای از قبل ضبط شده و به شکل آنلاین در دسترس هستند. شما می‌توانید با خریدن دوره‌ها، در هر زمان و مکانی (با دسترسی به اینترنت) دوره‌ها رو بگذرانید. امکان خرید دوره‌ها به صورت فیزیکی (Flash، Disk و DVD) میسر نیست.
                                     </p>
                                 </div>
@@ -73,7 +73,7 @@ export default function Questions() {
                                         onClick={() => handleToggle('2')}
                                         aria-expanded={activeKey === '2'}
                                     >
-                                        <span>چطور می‌توانم به دوره‌ها دسترسی پیدا کنم؟</span>
+                                        <span className="text-xl font-kalamehRegular text-black">چطور می‌توانم به دوره‌ها دسترسی پیدا کنم؟</span>
                                         <svg
                                             className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '2' ? 'rotate-180' : ''
                                                 }`}
@@ -98,7 +98,7 @@ export default function Questions() {
                                         }`}
                                     aria-labelledby="accordion-collapse-heading-2"
                                 >
-                                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
                                         پس از خرید دوره، می‌توانید از طریق پنل کاربری خود به دوره‌ها دسترسی داشته باشید. دوره‌ها به صورت آنلاین و در هر زمان قابل مشاهده هستند.
                                     </p>
                                 </div>
@@ -113,7 +113,7 @@ export default function Questions() {
                                         onClick={() => handleToggle('3')}
                                         aria-expanded={activeKey === '3'}
                                     >
-                                        <span>آیا دوره‌ها قابل دانلود شدن هستند؟</span>
+                                        <span className="text-xl font-kalamehRegular text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
                                         <svg
                                             className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '3' ? 'rotate-180' : ''
                                                 }`}
@@ -138,7 +138,7 @@ export default function Questions() {
                                         }`}
                                     aria-labelledby="accordion-collapse-heading-3"
                                 >
-                                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
                                         خیر، دوره‌ها به صورت آنلاین و فقط از طریق پنل کاربری قابل دسترسی هستند و امکان دانلود آنها وجود ندارد.
                                     </p>
                                 </div>
@@ -153,7 +153,7 @@ export default function Questions() {
                                         onClick={() => handleToggle('4')}
                                         aria-expanded={activeKey === '4'}
                                     >
-                                        <span>آیا دوره‌ها قابل دانلود شدن هستند؟</span>
+                                        <span className="text-xl font-kalamehRegular text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
                                         <svg
                                             className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '4' ? 'rotate-180' : ''
                                                 }`}
@@ -178,7 +178,7 @@ export default function Questions() {
                                         }`}
                                     aria-labelledby="accordion-collapse-heading-4"
                                 >
-                                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
                                         خیر، دوره‌ها به صورت آنلاین و فقط از طریق پنل کاربری قابل دسترسی هستند و امکان دانلود آنها وجود ندارد.
                                     </p>
                                 </div>
@@ -193,7 +193,7 @@ export default function Questions() {
                                         onClick={() => handleToggle('5')}
                                         aria-expanded={activeKey === '5'}
                                     >
-                                        <span>آیا دوره‌ها قابل دانلود شدن هستند؟</span>
+                                        <span className="text-xl font-kalamehRegular text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
                                         <svg
                                             className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '5' ? 'rotate-180' : ''
                                                 }`}
@@ -218,7 +218,7 @@ export default function Questions() {
                                         }`}
                                     aria-labelledby="accordion-collapse-heading-5"
                                 >
-                                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
                                         خیر، دوره‌ها به صورت آنلاین و فقط از طریق پنل کاربری قابل دسترسی هستند و امکان دانلود آنها وجود ندارد.
                                     </p>
                                 </div>
