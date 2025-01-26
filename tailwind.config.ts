@@ -7,9 +7,21 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./Feature/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./Feature/**/*.{js,ts,jsx,tsx,mdx}",
     flowbite.content(),
   ],
   theme: {
+    screens: {
+      mobile:"400px",
+      mobileXxl : "500px",
+      mobileXxxl: "600px",
+      sm:"640px",
+      md:"768px",
+      tablet: "900px",
+      lg:"1024px",
+      xl:"1280px",
+      "2xl":"1536px"
+    },
     extend: {
       fontFamily: {
         kalamehBlack: ['Kalameh-Black', 'sans-serif'],

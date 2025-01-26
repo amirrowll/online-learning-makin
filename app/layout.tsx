@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { ThemeModeScript } from "flowbite-react";
 import "./globals.css";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/navbar/Navbar";
+import BottomNavigation from "@/components/bottomNavigation/BottomNavigation";
 
 
 export const metadata: Metadata = {
@@ -20,9 +21,14 @@ export default function RootLayout({
         <ThemeModeScript />
         
       </head>
+
+      <body dir="rtl" className={inter.className}>
+        <Navbar/>
+
       <body dir="rtl" className="bg-[#f9f9f9]" >
+
         {children}
-        <Footer/>
+        <BottomNavigation />
       </body>
       
     </html>
