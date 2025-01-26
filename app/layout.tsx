@@ -22,7 +22,7 @@ export default function RootLayout({
         
       </head>
 
-      <body dir="rtl" className={inter.className}>
+ 
         <Navbar/>
 
       <body dir="rtl" className="bg-[#f9f9f9]" >
