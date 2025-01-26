@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeModeScript } from "flowbite-react";
 import "./globals.css";
-import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
+import BottomNavigation from "@/components/bottomNavigation/BottomNavigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body dir="rtl" className={inter.className}>
         <Navbar/>
         {children}
-        
+        <BottomNavigation />
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import { FieldErrors, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { CiSearch } from "react-icons/ci";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 
@@ -41,7 +41,7 @@ export default function Navbar() {
     };
 
     return (
-        <div className='fixed top-0 right-0 left-0 bg-white border-b-[2px] lg:bg-[#F9F9F9]'>
+        <div className='fixed top-0 right-0 left-0 bg-white border-b-[2px] lg:bg-[#F9F9F9] z-50'>
             <div className='flex items-center justify-between py-[14px] lg:py-[8px] px-4 xl:px-[70px] max-w-[1440px] mx-auto'>
 
                 <form className='relative' noValidate onSubmit={handleSubmit(onSubmit)}>

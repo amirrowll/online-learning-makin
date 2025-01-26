@@ -24,7 +24,7 @@ export default function BottomNavigation() {
     ]
 
   return (
-    <div className='fixed bottom-0 right-0 left-0 border-t-[1px] pr-[33px] pl-[13px] pt-[10px] py-[2px] lg:hidden'>
+    <div className='fixed bottom-0 right-0 left-0 border-t-[1px] pr-[33px] pl-[13px] pt-[10px] py-[2px] lg:hidden bg-white'>
         <div className='flex items-center justify-between'>
             {title.map(item =>(
             <div key={item.id} className='flex flex-col items-center '>
