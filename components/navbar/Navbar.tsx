@@ -68,7 +68,7 @@ export default function Navbar() {
 
             </div>
 
-            <div className='hidden lg:flex lg:item-center lg:justify-center lg:gap-12 lg:pb-[14px] lg:block'>
+            <div className='hidden lg:flex lg:item-center lg:justify-center lg:gap-12 lg:pb-[14px]'>
                 {titleNavbar.map(item=>(
                     <ul key={item.id} >
                         <li className='text-[20px] font-kalamehSemiBold '>{item.title}</li>
