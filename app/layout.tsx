@@ -18,11 +18,13 @@ export default function RootLayout({
     <html lang="fa">
       <head>
         <ThemeModeScript />
+        
       </head>
       <body dir="rtl" className="bg-[#f9f9f9]" >
         {children}
         <Footer/>
       </body>
+      
     </html>
   );
 }
