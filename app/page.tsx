@@ -7,8 +7,10 @@ function page() {
   return (
     <Container>
      
+
       <ReviewsSwiper />
       <Questions/>
+
     </Container>
   )
 }
