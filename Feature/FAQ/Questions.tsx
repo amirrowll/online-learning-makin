@@ -6,9 +6,10 @@ import { useState } from 'react'
 type EventKey = string | null
 
 export default function Questions() {
-    const [activeKey, setActiveKey] = useState<EventKey>('1') 
+    const [activeKey, setActiveKey] = useState<EventKey>('1') // پنل اول به صورت پیش‌فرض باز است
+
     const handleToggle = (eventKey: EventKey) => {
-        setActiveKey(eventKey)
+        setActiveKey(eventKey === activeKey ? null : eventKey) // اگر پنل قبلاً باز بود، آن را ببندید
     }
 
     return (
@@ -22,11 +23,10 @@ export default function Questions() {
                 <div className="w-full md:w-[60%]">
                     <div className="flex flex-col gap-">
                         <Accordion
-                            className="[&>button]:text-right border-none flex  flex-col "
-                            onToggle={handleToggle}
-                            activeKey={activeKey}
+                            className="[&>button]:text-right border-none flex flex-col"
+                            collapseAll // این پراپ باعث می‌شود فقط یک پنل باز باشد
                         >
-                            <Accordion.Panel eventKey="1">
+                            <Accordion.Panel eventKey="1" onClick={() => handleToggle('1')}>
                                 <Accordion.Title className="text-right text-lg md:text-xl font-kalamehRegular bg-white hover:bg-gray-100 focus:ring-0">
                                     نحوه آموزش در مکین چگونه است؟
                                 </Accordion.Title>
@@ -37,7 +37,7 @@ export default function Questions() {
                                 </Accordion.Content>
                             </Accordion.Panel>
 
-                            <Accordion.Panel eventKey="2">
+                            <Accordion.Panel eventKey="2" onClick={() => handleToggle('2')}>
                                 <Accordion.Title className="text-right text-lg md:text-xl font-kalamehRegular bg-white hover:bg-gray-100 focus:ring-0 mt-4">
                                     چطور میتوانم به محتوا دوره دسترسی پیدا کنم ؟
                                 </Accordion.Title>
@@ -48,7 +48,7 @@ export default function Questions() {
                                 </Accordion.Content>
                             </Accordion.Panel>
 
-                            <Accordion.Panel eventKey="3">
+                            <Accordion.Panel eventKey="3" onClick={() => handleToggle('3')}>
                                 <Accordion.Title className="text-right text-lg md:text-xl font-kalamehRegular bg-white hover:bg-gray-100 focus:ring-0 mt-4">
                                     آیا دوره ها قابل دانلود شدن هستند ؟
                                 </Accordion.Title>
@@ -59,7 +59,7 @@ export default function Questions() {
                                 </Accordion.Content>
                             </Accordion.Panel>
 
-                            <Accordion.Panel eventKey="4">
+                            <Accordion.Panel eventKey="4" onClick={() => handleToggle('4')}>
                                 <Accordion.Title className="text-right text-lg md:text-xl font-kalamehRegular bg-white hover:bg-gray-100 focus:ring-0 mt-4">
                                     آیا دیدن ویدیو ها محدودیت دارد ؟
                                 </Accordion.Title>
@@ -70,7 +70,7 @@ export default function Questions() {
                                 </Accordion.Content>
                             </Accordion.Panel>
 
-                            <Accordion.Panel eventKey="5">
+                            <Accordion.Panel eventKey="5" onClick={() => handleToggle('5')}>
                                 <Accordion.Title className="text-right text-lg md:text-xl font-kalamehRegular bg-white hover:bg-gray-100 focus:ring-0 mt-4">
                                     آیا در این دوره ها با مدرس در ارتباط هستم ؟
                                 </Accordion.Title>
