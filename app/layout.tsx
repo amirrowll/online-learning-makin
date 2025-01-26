@@ -25,7 +25,7 @@ export default function RootLayout({
       <body dir="rtl" className={inter.className}>
         <Navbar/>
         {children}
-        <BottomNavigation />
+        
       </body>
     </html>
   );
