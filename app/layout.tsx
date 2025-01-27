@@ -23,16 +23,11 @@ export default function RootLayout({
       <head>
         <ThemeModeScript />
       </head>
-
-      <body dir="rtl" className="bg-[#f9f9f9]" >
-      <Navbar/>
-
-      <body dir="rtl" className={inter.className}>
-        <Navbar/>
-
+      <body dir="rtl" className={`${inter.className} bg-[#f9f9f9]`}>
+        <Navbar />
         {children}
         <BottomNavigation />
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
