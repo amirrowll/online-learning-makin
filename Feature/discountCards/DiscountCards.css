@@ -1,0 +1,44 @@
+.swipper2 {
+  width: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+@media (max-width: 1280px) {
+  .swipper2 .swiper-button-next,
+  .swipper2 .swiper-button-prev {
+    display: none !important;
+  }
+}
+
+.swipper2 .swiper-pagination {
+  display: none !important;
+}
+.swipper2 .swiper-button-next::after,
+.swipper2 .swiper-button-prev::after {
+  content: "" !important;
+}
+
+.swipper2 .swiper-button-next {
+  position: absolute;
+  top: 45%;
+  left: -30px !important;
+  background: url("/landing/img/left.svg") no-repeat center;
+  background-color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  background-size: contain;
+}
+
+.swipper2 .swiper-button-prev {
+  position: absolute;
+  top: 45%;
+  right: -30px !important;
+  background: url("/landing/img/right.svg") no-repeat center;
+  background-color: white;
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  background-size: contain;
+}
