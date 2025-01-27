@@ -1,4 +1,6 @@
 "use client"
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { CiSearch } from "react-icons/ci";
@@ -10,22 +12,28 @@ interface input {
 
 export default function Navbar() {
 
+    const pathName = usePathname()
+
     const titleNavbar =[
         {
             id :1 ,
             title : "صفحه اصلی",
+            url : "/"
         },
         {
             id :2 ,
             title : "  دوره ها ",
+            url: "/courses"
         },
         {
             id :3 ,
             title : " قوانین و مقررات ",
+            url: "/rules"
         },
         {
             id :4 ,
             title : " درباره ما ",
+            url : "aboutUs"
         },
     ]
 
@@ -71,7 +79,7 @@ export default function Navbar() {
             <div className='hidden lg:flex lg:item-center lg:justify-center lg:gap-12 lg:pb-[14px]'>
                 {titleNavbar.map(item=>(
                     <ul key={item.id} >
-                        <li className='text-[20px] font-kalamehSemiBold '>{item.title}</li>
+                       <Link href={item.url} className={item.url === pathName ? "underline decoration-[#F28C28] underline-offset-[20px] rounded-[4px] decoration-[2.5px]" : "text-black"}><li className='text-[20px] font-kalamehSemiBold '>{item.title}</li></Link> 
                     </ul>
                 ))}
             </div>
