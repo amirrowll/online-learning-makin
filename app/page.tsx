@@ -17,9 +17,8 @@ function page() {
       <Introduction />
       <ReviewsSwiper />
       <Questions/>
-      <Footer />
     </Container>
   )
 }
 
-export default page
+export default page 

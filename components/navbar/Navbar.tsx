@@ -23,7 +23,7 @@ export default function Navbar() {
         {
             id :2 ,
             title : "  دوره ها ",
-            url: "/courses"
+            url: "/Courses"
         },
         {
             id :3 ,
