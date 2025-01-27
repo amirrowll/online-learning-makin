@@ -3,6 +3,7 @@ import { ThemeModeScript } from "flowbite-react";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import BottomNavigation from "@/components/bottomNavigation/BottomNavigation";
+import Footer from "@/components/Footer/Footer";
 
 
 export const metadata: Metadata = {
@@ -23,12 +24,13 @@ export default function RootLayout({
       </head>
 
  
-        <Navbar/>
+        
 
       <body dir="rtl" className="bg-[#f9f9f9]" >
-
+      <Navbar/>
         {children}
         <BottomNavigation />
+        <Footer/>
       </body>
       
     </html>
