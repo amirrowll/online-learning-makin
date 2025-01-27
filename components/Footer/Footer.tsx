@@ -47,7 +47,7 @@ const FooterLink3 = [
 function Footer() {
     return (
         <footer className="bg-[#f9f9f9] dark:bg-gray-900 mt-20 border-t-2" >
-            <div className="mx-auto w-full max-w-[1920px]  p-4 py-6 lg:py-8 lg:px-[70px]">
+            <div className="mx-auto w-full max-w-[1440px]  p-4 py-6 lg:py-8 lg:px-[70px]">
                 <div className="md:flex md:justify-between md:gap-[110px]">
                     <div className="mb-6 md:mb-0">
                         <a href="https://flowbite.com/" className="flex flex-col md:flex-row items-center gap-4">
@@ -112,7 +112,8 @@ function Footer() {
                             <p className=" text-xl font-kalamehMedium">
                                 مکین در صفحات مجازی:
                             </p>
-                            <ul className="text-gray-500 dark:text-gray-400 font-medium flex gap-5">
+                            <ul className="text-gray-500 dark:text-gray-400 font-medium flex sm:flex-row md:flex-col
+                             lg:flex-row gap-5">
 
                                 {FooterLink3.map((item) => (
                                     <li key={item.id} className="mb-4">
