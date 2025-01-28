@@ -23,9 +23,8 @@ export default function RootLayout({
       </head>
 
  
-        <Navbar/>
-
       <body dir="rtl" className="bg-[#f9f9f9]" >
+        <Navbar/>
 
         {children}
         <BottomNavigation />

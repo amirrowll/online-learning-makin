@@ -4,10 +4,6 @@ import Courses from '@/Feature/courses/Courses'
 import DiscountCards from '@/Feature/discountCards/DiscountCards'
 import Header from '@/Feature/header/Header'
 import Introduction from '@/Feature/introduction/Introduction'
-
-
-import Header from '@/Feature/header/Header'
-
 import Questions from '@/Feature/FAQ/Questions'
 import ReviewsSwiper from '@/Feature/ReviewsSwiper/ReviewsSwiper'
 
