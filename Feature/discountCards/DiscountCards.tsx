@@ -4,7 +4,6 @@ import { IoPersonOutline } from "react-icons/io5";
 import { LuAlarmClock } from "react-icons/lu";
 import { CiPercent } from "react-icons/ci";
 import { Keyboard, Mousewheel, Navigation, Pagination } from "swiper/modules";
-import { FaChevronRight } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";

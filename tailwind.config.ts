@@ -18,6 +18,7 @@ const config: Config = {
       mobileXxxl: "600px",
       sm:"640px",
       md:"768px",
+      smallTablet: " 800px ",
       tablet: "900px",
       lg:"1024px",
       xl:"1280px",
