@@ -85,7 +85,7 @@ function page() {
                     <Boxinfo />
                     <SeasonalArrangement/>
                     <UserComments/>
-
+                    
 
                 </div>
             </div>
