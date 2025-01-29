@@ -12,30 +12,30 @@ export default function Questions() {
     };
 
     return (
-        <div className="w-full mx-auto p-4 mt-[100px]">
-            <div className="flex items-center gap-2 mb-8 justify-center">
-                <CiCircleQuestion size={32} className="w-9 h-9" />
-                <h1 className="text-2xl font-kalamehMedium text-gray-800">سوالات پرتکرار</h1>
+        <div className="mx-auto mt-[100px] w-full p-4">
+            <div className="mb-8 flex items-center justify-center gap-2">
+                <CiCircleQuestion size={32} className="size-9" />
+                <h1 className="font-kalamehMedium text-2xl text-gray-800">سوالات پرتکرار</h1>
             </div>
 
-            <div className='flex flex-col md:flex-row gap-8 w-full justify-between items-center'>
-                <div className="w-full md:w-[60%]">
+            <div className='flex w-full flex-col items-center justify-between gap-8 md:flex-row'>
+                <div className="w-full md:w-3/5">
                     <div className="flex flex-col gap-4">
                         <div id="accordion-collapse" data-accordion="collapse">
                             {/* آیتم اول */}
-                            <div className="mb-4 bg-white rounded-lg shadow-sm">
+                            <div className="mb-4 rounded-lg bg-white shadow-sm">
                                 <h2 id="accordion-collapse-heading-1">
                                     <button
                                         type="button"
-                                        className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                                        className="flex w-full items-center justify-between gap-3 rounded-t-xl border border-b-0 border-gray-200 p-5 font-medium text-gray-500 focus:ring-4 focus:ring-gray-200 rtl:text-right"
                                         onClick={() => handleToggle('1')}
                                         aria-expanded={activeKey === '1'}
                                     >
-                                        <span className="text-xl font-kalamehRegular text-black">
+                                        <span className="font-kalamehRegular text-xl text-black">
                                             نحوه آموزش در مکین چگونه است؟
                                         </span>
                                         <svg
-                                            className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '1' ? 'rotate-180' : ''
+                                            className={`size-3 shrink-0 transition-transform ${activeKey === '1' ? 'rotate-180' : ''
                                                 }`}
                                             aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -54,28 +54,27 @@ export default function Questions() {
                                 </h2>
                                 <div
                                     id="accordion-collapse-body-1"
-                                    className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${activeKey === '1' ? 'block' : 'hidden'
-                                        }`}
+                                    className={`border border-b-0 border-gray-200 p-5 ${activeKey === '1' ? 'block' : 'hidden'}`}
                                     aria-labelledby="accordion-collapse-heading-1"
                                 >
-                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
+                                    <p className="mb-2 font-kalamehRegular text-base text-black">
                                         دوره‌های آکادمی مکین تنها به صورت ویدئوهای از قبل ضبط شده و به شکل آنلاین در دسترس هستند. شما می‌توانید با خریدن دوره‌ها، در هر زمان و مکانی (با دسترسی به اینترنت) دوره‌ها رو بگذرانید. امکان خرید دوره‌ها به صورت فیزیکی (Flash، Disk و DVD) میسر نیست.
                                     </p>
                                 </div>
                             </div>
 
                             {/* آیتم دوم */}
-                            <div className="mb-4 bg-white rounded-lg shadow-sm">
+                            <div className="mb-4 rounded-lg bg-white shadow-sm">
                                 <h2 id="accordion-collapse-heading-2">
                                     <button
                                         type="button"
-                                        className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                                        className="flex w-full items-center justify-between gap-3 border border-b-0 border-gray-200 p-5 font-medium text-gray-500 focus:ring-4 focus:ring-gray-200 rtl:text-right"
                                         onClick={() => handleToggle('2')}
                                         aria-expanded={activeKey === '2'}
                                     >
-                                        <span className="text-xl font-kalamehRegular text-black">چطور می‌توانم به دوره‌ها دسترسی پیدا کنم؟</span>
+                                        <span className="font-kalamehRegular text-xl text-black">چطور می‌توانم به دوره‌ها دسترسی پیدا کنم؟</span>
                                         <svg
-                                            className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '2' ? 'rotate-180' : ''
+                                            className={`size-3 shrink-0 transition-transform ${activeKey === '2' ? 'rotate-180' : ''
                                                 }`}
                                             aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -94,28 +93,27 @@ export default function Questions() {
                                 </h2>
                                 <div
                                     id="accordion-collapse-body-2"
-                                    className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${activeKey === '2' ? 'block' : 'hidden'
-                                        }`}
+                                    className={`border border-b-0 border-gray-200 p-5 ${activeKey === '2' ? 'block' : 'hidden'}`}
                                     aria-labelledby="accordion-collapse-heading-2"
                                 >
-                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
+                                    <p className="mb-2 font-kalamehRegular text-base text-black">
                                         پس از خرید دوره، می‌توانید از طریق پنل کاربری خود به دوره‌ها دسترسی داشته باشید. دوره‌ها به صورت آنلاین و در هر زمان قابل مشاهده هستند.
                                     </p>
                                 </div>
                             </div>
 
                             {/* آیتم سوم */}
-                            <div className="mb-4 bg-white rounded-lg shadow-sm">
+                            <div className="mb-4 rounded-lg bg-white shadow-sm">
                                 <h2 id="accordion-collapse-heading-3">
                                     <button
                                         type="button"
-                                        className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                                        className="flex w-full items-center justify-between gap-3 border border-gray-200 p-5 font-medium text-gray-500 focus:ring-4 focus:ring-gray-200 rtl:text-right"
                                         onClick={() => handleToggle('3')}
                                         aria-expanded={activeKey === '3'}
                                     >
-                                        <span className="text-xl font-kalamehRegular text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
+                                        <span className="font-kalamehRegular text-xl text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
                                         <svg
-                                            className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '3' ? 'rotate-180' : ''
+                                            className={`size-3 shrink-0 transition-transform ${activeKey === '3' ? 'rotate-180' : ''
                                                 }`}
                                             aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -134,28 +132,27 @@ export default function Questions() {
                                 </h2>
                                 <div
                                     id="accordion-collapse-body-3"
-                                    className={`p-5 border border-t-0 border-gray-200 dark:border-gray-700 ${activeKey === '3' ? 'block' : 'hidden'
-                                        }`}
+                                    className={`border border-t-0 border-gray-200 p-5 ${activeKey === '3' ? 'block' : 'hidden'}`}
                                     aria-labelledby="accordion-collapse-heading-3"
                                 >
-                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
+                                    <p className="mb-2 font-kalamehRegular text-base text-black">
                                         خیر، دوره‌ها به صورت آنلاین و فقط از طریق پنل کاربری قابل دسترسی هستند و امکان دانلود آنها وجود ندارد.
                                     </p>
                                 </div>
                             </div>
 
                             {/* آیتم چهارم */}
-                            <div className="mb-4 bg-white rounded-lg shadow-sm">
+                            <div className="mb-4 rounded-lg bg-white shadow-sm">
                                 <h2 id="accordion-collapse-heading-4">
                                     <button
                                         type="button"
-                                        className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                                        className="flex w-full items-center justify-between gap-3 border border-gray-200 p-5 font-medium text-gray-500 focus:ring-4 focus:ring-gray-200 rtl:text-right"
                                         onClick={() => handleToggle('4')}
                                         aria-expanded={activeKey === '4'}
                                     >
-                                        <span className="text-xl font-kalamehRegular text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
+                                        <span className="font-kalamehRegular text-xl text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
                                         <svg
-                                            className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '4' ? 'rotate-180' : ''
+                                            className={`size-3 shrink-0 transition-transform ${activeKey === '4' ? 'rotate-180' : ''
                                                 }`}
                                             aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -174,28 +171,27 @@ export default function Questions() {
                                 </h2>
                                 <div
                                     id="accordion-collapse-body-4"
-                                    className={`p-5 border border-t-0 border-gray-200 dark:border-gray-700 ${activeKey === '4' ? 'block' : 'hidden'
-                                        }`}
+                                    className={`border border-t-0 border-gray-200 p-5 ${activeKey === '4' ? 'block' : 'hidden'}`}
                                     aria-labelledby="accordion-collapse-heading-4"
                                 >
-                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
+                                    <p className="mb-2 font-kalamehRegular text-base text-black">
                                         خیر، دوره‌ها به صورت آنلاین و فقط از طریق پنل کاربری قابل دسترسی هستند و امکان دانلود آنها وجود ندارد.
                                     </p>
                                 </div>
                             </div>
 
                             {/* آیتم پنجم */}
-                            <div className="mb-4 bg-white rounded-lg shadow-sm">
+                            <div className="mb-4 rounded-lg bg-white shadow-sm">
                                 <h2 id="accordion-collapse-heading-5">
                                     <button
                                         type="button"
-                                        className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                                        className="flex w-full items-center justify-between gap-3 border border-gray-200 p-5 font-medium text-gray-500 focus:ring-4 focus:ring-gray-200 rtl:text-right"
                                         onClick={() => handleToggle('5')}
                                         aria-expanded={activeKey === '5'}
                                     >
-                                        <span className="text-xl font-kalamehRegular text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
+                                        <span className="font-kalamehRegular text-xl text-black">آیا دوره‌ها قابل دانلود شدن هستند؟</span>
                                         <svg
-                                            className={`w-3 h-3 shrink-0 transition-transform ${activeKey === '5' ? 'rotate-180' : ''
+                                            className={`size-3 shrink-0 transition-transform ${activeKey === '5' ? 'rotate-180' : ''
                                                 }`}
                                             aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -214,11 +210,10 @@ export default function Questions() {
                                 </h2>
                                 <div
                                     id="accordion-collapse-body-5"
-                                    className={`p-5 border border-t-0 border-gray-200 dark:border-gray-700 ${activeKey === '5' ? 'block' : 'hidden'
-                                        }`}
+                                    className={`border border-t-0 border-gray-200 p-5 ${activeKey === '5' ? 'block' : 'hidden'}`}
                                     aria-labelledby="accordion-collapse-heading-5"
                                 >
-                                    <p className="mb-2 text-black text-base font-kalamehRegular dark:text-gray-400">
+                                    <p className="mb-2 font-kalamehRegular text-base text-black">
                                         خیر، دوره‌ها به صورت آنلاین و فقط از طریق پنل کاربری قابل دسترسی هستند و امکان دانلود آنها وجود ندارد.
                                     </p>
                                 </div>
