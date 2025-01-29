@@ -13,8 +13,8 @@ const CoursePage: React.FC = () => {
     };
 
     return (
-        <div className='flex w-full mt-[85px] gap-10'>
-            <div className='w-[903px]'>
+        <div className='flex flex-col lg:flex-row w-full mt-[85px] gap-5 lg:gap-10 px-4 lg:px-0'>
+            <div className='w-full lg:w-[903px]'>
                 <div className="mb-4 bg-white rounded-lg shadow-sm">
                     <h2 id="accordion-collapse-heading-1">
                         <button
@@ -175,19 +175,19 @@ const CoursePage: React.FC = () => {
                 </div>
             </div>
 
-            <div className='w-[357px] max-h-[200px] bg-white px-4 rounded-xl py-4 sticky top-36'>
+            <div className='w-full lg:w-[357px] min-h-[200px] bg-white px-4 rounded-xl py-4 sticky top-[8.5rem] h-fit'>
                 <div className='flex items-center gap-4'>
-                    <div className='w-[72px] h-[72px]'>
+                    <div className='w-[60px] h-[60px] lg:w-[72px] lg:h-[72px]'>
                         <img className='w-full h-full' src="/Courses/tlogo.svg" alt="مدرس" />
                     </div>
 
                     <div>
-                        <p className='text-base font-kalamehMedium'>حسین رفیعی</p>
-                        <p className='text-[#9E9E9E] text-sm font-kalamehRegular'>مدرس دوره</p>
-                    </div>  
+                        <p className='text-base lg:text-lg font-kalamehMedium'>حسین رفیعی</p>
+                        <p className='text-[#9E9E9E] text-xs lg:text-sm font-kalamehRegular'>مدرس دوره</p>
+                    </div>
                 </div>
 
-                <p className='text-sm font-kalamehRegular mt-5'>
+                <p className='text-xs lg:text-sm font-kalamehRegular mt-4 lg:mt-5'>
                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
                 </p>
             </div>
