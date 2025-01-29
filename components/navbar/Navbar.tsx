@@ -10,6 +10,8 @@ interface input {
     search: string
 }
 
+
+
 export default function Navbar() {
 
     const pathName = usePathname()
