@@ -81,7 +81,7 @@ function page() {
 
                     </div>
 
-                    <Datacart />
+                    <Datacart />    
                     <Boxinfo />
                     <SeasonalArrangement/>
                     <UserComments/>
