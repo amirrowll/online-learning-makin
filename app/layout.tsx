@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ThemeModeScript } from "flowbite-react";
+import { Footer, ThemeModeScript } from "flowbite-react";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import BottomNavigation from "@/components/bottomNavigation/BottomNavigation";
@@ -25,9 +25,9 @@ export default function RootLayout({
  
       <body dir="rtl" className="bg-[#f9f9f9]" >
         <Navbar/>
-
         {children}
         <BottomNavigation />
+        <Footer />
       </body>
       
     </html>
