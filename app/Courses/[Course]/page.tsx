@@ -1,18 +1,23 @@
+/* eslint-disable tailwindcss/classnames-order */
 import Container from '@/components/container/Container'
+import Boxinfo from '@/Feature/boxinfo/Boxinfo'
+import Datacart from '@/Feature/dataCart/Datacart'
+import SeasonalArrangement from '@/Feature/SeasonalArrangement/SeasonalArrangement'
+import UserComments from '@/Feature/userComments/UserComments'
 import React from 'react'
 
 function page() {
     return (
         <Container>
-            <div className='flex flex-col mt-10 px-4 lg:px-[70px] ' >
+            <div className='flex flex-col mt-40 px-4 lg:px-[70px] ' >
                 <div>
                     <div className='text-[#636363] text-base font-kalamehMedium'>
-                        <p>صفحه اصلی /  دوره ها / دوره جامع آموزش UI/UX </p>
+                        <p>صفحه اصلی /  دوره ها / دوره جامع آموزش React </p>
                     </div>
 
                     <div className='mt-10 flex flex-col lg:flex-row justify-between '>
 
-                        <div>
+                        <div className=''>
                             <img src="/Courses/Youtube player.svg" alt="img" />
                         </div>
 
@@ -20,7 +25,7 @@ function page() {
                             <div className='w-[310px] bg-white p-6 flex flex-col gap-6 rounded-lg'>
 
                                 <div className='text-lg font-kalamehBold'>
-                                    <p>دوره جامع آموزش UI/UX </p>
+                                    <p>دوره جامع آموزش React </p>
                                 </div>
 
                                 <div className='flex items-center justify-between '>
@@ -62,7 +67,7 @@ function page() {
                             </div>
                         </div>
 
-                        <div className='bg-white mt-8 p-4 flex items-center flex-col gap-6 lg:hidden '>
+                        <div className='bg-white mt-8 p-4 flex items-center flex-col gap-6 lg:hidden  rounded-xl'>
                             <div>
                                 <p className='text-base font-kalamehBold'>دوره جامع آموزش UI/UX </p>
                             </div>
@@ -76,8 +81,11 @@ function page() {
 
                     </div>
 
-
-
+                    <Datacart />    
+                    <Boxinfo />
+                    <SeasonalArrangement/>
+                    <UserComments/>
+                    
 
                 </div>
             </div>

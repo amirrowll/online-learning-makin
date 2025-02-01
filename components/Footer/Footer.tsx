@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { IoCallOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaInstagram, FaTelegram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
@@ -46,37 +47,37 @@ const FooterLink3 = [
 
 function Footer() {
     return (
-        <footer className="bg-[#f9f9f9] dark:bg-gray-900 mt-20 border-t-2" >
-            <div className="mx-auto w-full max-w-[1920px]  p-4 py-6 lg:py-8 lg:px-[70px]">
+        <footer className="mt-20 border-t-2 bg-[#f9f9f9]" >
+            <div className="mx-auto w-full max-w-[1440px]  p-4 py-6 lg:px-[70px] lg:py-8">
                 <div className="md:flex md:justify-between md:gap-[110px]">
                     <div className="mb-6 md:mb-0">
-                        <a href="https://flowbite.com/" className="flex flex-col md:flex-row items-center gap-4">
+                        <a href="https://flowbite.com/" className="flex flex-col items-center gap-4 md:flex-row">
                             <img
                                 src="/landing/img/logo-makeen (1) 1.svg"
-                                className="w-[180px] h-[80px]"
+                                className="h-[80px] w-[180px]"
                                 alt="FlowBite Logo"
                             />
-                            <div className='flex justify-center flex-col'>
+                            <div className='flex flex-col justify-center'>
                                 <div className="flex items-center gap-3">
                                     <IoCallOutline size={20} />
-                                    <p className='text-lg font-kalamehRegular'>۰۲۱-۷۷۱۸۸۱۸۵-۶</p>
+                                    <p className='font-kalamehRegular text-lg'>۰۲۱-۷۷۱۸۸۱۸۵-۶</p>
                                 </div>
 
                                 <div className="flex items-center gap-3">
                                     <IoLocationOutline size={20} />
-                                    <p className='text-base font-kalamehRegular'>مترو علم صنعت، خیابان سلیمانی مدائن پلاک ۵۲۰</p>
+                                    <p className='font-kalamehRegular text-base'>مترو علم صنعت، خیابان سلیمانی مدائن پلاک ۵۲۰</p>
                                 </div>
 
                             </div>
                         </a>
                         <div className="mt-4 lg:w-[530px]">
-                            <p className="text-base font-kalamehRegular">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد</p>
+                            <p className="font-kalamehRegular text-base">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد</p>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 ">
+                    <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6 ">
                         <div>
 
-                            <ul className="text-gray-500 dark:text-gray-400 text-xl font-kalamehRegular">
+                            <ul className="font-kalamehRegular text-xl text-gray-500">
 
                                 {FooterLink2.map((item) => (
                                     <li key={item.id} className="mb-4">
@@ -93,7 +94,7 @@ function Footer() {
                         </div>
                         <div>
 
-                            <ul className="text-gray-500 dark:text-gray-400 text-xl font-kalamehRegular">
+                            <ul className="font-kalamehRegular text-xl text-gray-500">
 
                                 {FooterLink1.map((item) => (
                                     <li key={item.id} className="mb-4">
@@ -108,11 +109,12 @@ function Footer() {
 
                             </ul>
                         </div>
-                        <div className="flex items-center  flex-col gap-5">
-                            <p className=" text-xl font-kalamehMedium">
+                        <div className="flex flex-col  items-center gap-5">
+                            <p className="font-kalamehMedium text-xl">
                                 مکین در صفحات مجازی:
                             </p>
-                            <ul className="text-gray-500 dark:text-gray-400 font-medium flex gap-5">
+                            <ul className="flex gap-5 font-medium text-gray-500 sm:flex-row
+                             md:flex-col lg:flex-row">
 
                                 {FooterLink3.map((item) => (
                                     <li key={item.id} className="mb-4">
@@ -136,9 +138,9 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-                <hr className="mt-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:mt-8" />
+                <hr className="mt-6 border-gray-200 sm:mx-auto lg:mt-8" />
                 <div className="flex items-center justify-center">
-                    <span className="text-base font-kalamehBold text-[#ABABAB] sm:text-center dark:text-[#ABABAB] mt-4">
+                    <span className="mt-4 font-kalamehBold text-base text-[#ABABAB] sm:text-center">
                         آکادمی مکین
                     </span>
                 </div>
