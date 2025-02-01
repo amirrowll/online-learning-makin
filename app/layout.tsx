@@ -22,17 +22,14 @@ export default function RootLayout({
 
   return (
     <html lang="fa">
-      <head>
-        
-      </head>
 
       <body dir="rtl" className="bg-[#f9f9f9]" >
         {!isAdminOrUserPanel && <Navbar />}
-
         {children}
         {!isAdminOrUserPanel && <BottomNavigation />}
         {!isAdminOrUserPanel && <Footer />}
       </body>
+      
     </html>
   );
 }

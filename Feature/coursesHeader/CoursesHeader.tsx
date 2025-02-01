@@ -75,7 +75,7 @@ export default function CoursesHeader() {
       </div>
 
 
-      {/* <div id="drawer-bottom-example" className="sm:hidden fixed bottom-14 left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 transform-none" aria-labelledby="drawer-bottom-label">
+      <div id="drawer-bottom-example" className="sm:hidden fixed bottom-14 left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 transform-none" aria-labelledby="drawer-bottom-label">
         <h5 id="drawer-bottom-label" className="inline-flex items-center mb-4 text-[18px] font-kalamehRegular text-[#051116]"> دسته بندی دوره ها </h5>
         <button type="button" data-drawer-hide="drawer-bottom-example" aria-controls="drawer-bottom-example" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
           <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -88,7 +88,7 @@ export default function CoursesHeader() {
             <li className='text-[#051116] border-b py-3'>{item.text}</li>
           </ul>
         ))}
-      </div> */}
+      </div>
 
       <div className='flex items-start mt-8 w-full '>
         <div className='border-[2px] shadow-lg rounded-lg w-fit px-3 py-7 sm:flex sm:flex-col sm:items-start hidden '>

@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { CiSearch } from "react-icons/ci";
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
@@ -70,10 +70,10 @@ export default function Navbar() {
                 <img className='md:mr-[-230px] lg:mr-[-100px] hidden lg:block' src="/landing/img/logo-makeen (1) 3.svg" alt="img" />
 
                 <div className='flex items-center gap-[25px]'>
-                    <PiShoppingCartSimpleLight className='w-6 h-6 text-[#949494] md:text-[#051116]' />
-                    <button className='hidden text-[#F28C28] text-[20px] font-kalamehMedium border-[1px] border-[#F28C28] rounded-[12px] px-5 py-[2px] lg:block'>
+                    <Link href="cart" className={  pathName === "/cart" ? "text-[#F28C28]" : "text-black"}><PiShoppingCartSimpleLight className='w-6 h-6 text-[#949494] md:text-[#051116]' /></Link>
+                    <Link href="login"><button className='hidden text-[#F28C28] text-[20px] font-kalamehMedium border-[1px] border-[#F28C28] rounded-[12px] px-5 py-[2px] lg:block'>
                         ورود | ثبت نام
-                    </button>
+                    </button></Link>
                 </div>
 
             </div>
