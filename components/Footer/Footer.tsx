@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { IoCallOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaInstagram, FaTelegram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
