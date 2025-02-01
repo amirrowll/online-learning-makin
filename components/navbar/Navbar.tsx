@@ -69,9 +69,9 @@ export default function Navbar() {
 
                 <div className='flex items-center gap-[25px]'>
                     <Link href="cart" className={  pathName === "/cart" ? "text-[#F28C28]" : "text-black"}><PiShoppingCartSimpleLight className='w-6 h-6 text-[#949494] md:text-[#051116]' /></Link>
-                    <button className='hidden text-[#F28C28] text-[20px] font-kalamehMedium border-[1px] border-[#F28C28] rounded-[12px] px-5 py-[2px] lg:block'>
+                    <Link href="login"><button className='hidden text-[#F28C28] text-[20px] font-kalamehMedium border-[1px] border-[#F28C28] rounded-[12px] px-5 py-[2px] lg:block'>
                         ورود | ثبت نام
-                    </button>
+                    </button></Link>
                 </div>
 
             </div>
