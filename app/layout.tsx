@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   const headersList = headers();
   const pathname = headersList.get('x-pathname') || '';
-  const isAdminOrUserPanel = pathname.startsWith('/admin-panel') || pathname.startsWith('/user-panel');
+  const isAdminOrUserPanel = pathname.startsWith('/admin-panel') || pathname.startsWith('/user-panel') || pathname.startsWith('/login') || pathname.startsWith('/register') || pathname.startsWith('/forget-password') || pathname.startsWith('/reset-password') ;
 
   return (
     <html lang="fa">
