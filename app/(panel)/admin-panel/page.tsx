@@ -42,7 +42,7 @@ export default function Page() {
 
     return (
         <div className='flex flex-row-reverse justify-between'>
-            <div className='bg-[#ffffff] h-[96px] w-full flex items-center justify-between  gap-2 pl-10 pr-10    py-4'>
+            <div className='bg-[#ffffff] h-[96px] w-full flex items-center justify-between  gap-2 pl-10 pr-10 py-4'>
                 <button
                     className="lg:hidden ml-4 hover:bg-gray-100 p-2 rounded-lg transition-colors"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
