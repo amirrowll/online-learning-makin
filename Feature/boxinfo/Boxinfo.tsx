@@ -3,7 +3,6 @@
 import { useState } from "react";
 import InfoValue1 from "./InfoValue/InfoValue1";
 
-// تعریف نوع‌ها برای TabContents
 type TabKey = "درباره دوره" | "درباره استاد" | "سر فصل ها";
 type TabContentsType = Record<TabKey, () => JSX.Element>;
 
