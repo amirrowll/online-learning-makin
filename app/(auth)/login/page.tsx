@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link';
 import React from 'react'
 import { FieldErrors, useForm } from 'react-hook-form'
 import { FcGoogle } from "react-icons/fc";
@@ -42,7 +43,7 @@ export default function page() {
                         })}
                     />
                     <p className="error">{errors.call?.message}</p>
-                    <button className='bg-[#F28C28] px-[113px] sm:px-[136px] text-white text-[17px] sm:text-[20px] font-kalamehMedium rounded-lg py-[7.5px] mt-6'> ورود </button>
+                    <Link href="password"><button className='bg-[#F28C28] px-[113px] sm:px-[136px] text-white text-[17px] sm:text-[20px] font-kalamehMedium rounded-lg py-[7.5px] mt-6'> ورود </button></Link>
                 </form>
             </div>
             <div className='flex items-center justify-center bg-white rounded-[10px] shadow-md px-[40px] sm:px-[55px] py-3 mt-10'>

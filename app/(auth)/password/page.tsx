@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link'
 import React from 'react'
 import { FieldErrors, useForm } from 'react-hook-form'
 
@@ -48,18 +49,18 @@ export default function PassWord() {
                         </div>
                         <label htmlFor="remember" className="ms-2 text-sm font-kalamehRegular text-[#9E9E9E]"> مرا به خاطر بسپار </label>
                     </div>
-                    <button className='bg-[#F28C28] px-[113px] sm:px-[136px] text-white text-[17px] sm:text-[20px] font-kalamehMedium rounded-lg py-[7.5px] sm:py-[6px] mt-4'> ورود </button>
+                    <Link href="register"><button className='bg-[#F28C28] px-[113px] sm:px-[136px] text-white text-[17px] sm:text-[20px] font-kalamehMedium rounded-lg py-[7.5px] sm:py-[6px] mt-4'> ورود </button></Link>
                 </form>
             </div>
             <div className='flex items-center justify-center mt-[30px]'>
                 <img src="/landing/img/password 1.svg" alt="img" />
-                <span className='text-[#36A8D9] font-kalamehMedium text-[15px] mr-2 sm:text-[18px]'> فراموشی کلمه عبور </span>
+                <Link href="reset-password"><button className='text-[#36A8D9] font-kalamehMedium text-[15px] mr-2 sm:text-[18px]'> فراموشی کلمه عبور </button></Link>
             </div>
             <div className="inline-flex items-center justify-center w-full">
                 <hr className="w-64 h-px my-8 bg-[#949494] border-0" />
                 <span className="absolute px-3 font-kalamehRegular text-[16px] text-[#949494] -translate-x-1/2 bg-[#F9F9F9] left-1/2 ">یا</span>
             </div>
-            <button className='border-[#F28C28] border rounded-lg text-[#F28C28] px-[30px] py-2 text-[17px] font-kalamehMedium sm:text-[20px] sm:px-[40px] sm:py-1'> ورود با کلمه عبور یکبار مصرف </button>
+            <Link href="otp"><button className='border-[#F28C28] border rounded-lg text-[#F28C28] px-[30px] py-2 text-[17px] font-kalamehMedium sm:text-[20px] sm:px-[40px] sm:py-1'> ورود با کلمه عبور یکبار مصرف </button></Link>
         </div>
     )
 }

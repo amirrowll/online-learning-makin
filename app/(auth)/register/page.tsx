@@ -78,6 +78,8 @@ export default function reset() {
                             <option value="" > جنسیت خود را انتخاب کنید</option>
                             <option value="option1" className='text-black'> مرد </option>
                             <option value="option2" className='text-black'> زن </option>
+                            <option value="option2" className='text-black'> کروسان </option>
+                            <option value="option2" className='text-black'> هلکوپتر </option>
                         </select>
                     </div>
                     <button className='bg-[#F28C28] px-[80px] sm:px-[96px] text-white text-[17px] sm:text-[20px] font-kalamehMedium rounded-lg py-[7.5px] sm:py-[6px] mt-8'> تغییر کلمه عبور </button>
