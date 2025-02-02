@@ -7,15 +7,15 @@ import { BookOpen, Layout, Users2, BookOpen as Course, MessageSquare, Settings, 
 import { FaRegCircleUser } from "react-icons/fa6";
 import { PiUsersThree } from "react-icons/pi";
 import { BiCategoryAlt } from "react-icons/bi";
-import Dashboard from '@/admin-component/Dashboard';
-import Users from '@/admin-component/Users';
-import Teachers from '@/admin-component/Teachers';
-import Categories from '@/admin-component/Categories';
-import Courses from '@/admin-component/Courses';
-import RecentOrders from '@/admin-component/RecentOrders';
-import Comments from '@/admin-component/Comments';
-import Tickets from '@/admin-component/Tickets';
-import SettingsPage from '@/admin-component/SettingsPage';
+import Dashboard from '@/Feature/admin-component/Dashboard';
+import Users from '@/Feature/admin-component/Users';
+import Teachers from '@/Feature/admin-component/Teachers';
+import Categories from '@/Feature/admin-component/Categories';
+import Courses from '@/Feature/admin-component/Courses';
+import RecentOrders from '@/Feature/admin-component/RecentOrders';
+import Comments from '@/Feature/admin-component/Comments';
+import Tickets from '@/Feature/admin-component/Tickets';
+import SettingsPage from '@/Feature/admin-component/SettingsPage';
 
 
 
@@ -72,7 +72,7 @@ export default function Page() {
 
             </div>
                
-            <div className="flex-1 p-6 absolute top-24">
+            <div className="absolute top-24 w-[85%]">
                 {menuItems[activeItem].component}
             </div>
 
