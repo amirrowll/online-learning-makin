@@ -1,12 +1,13 @@
 /* eslint-disable tailwindcss/classnames-order */
-import React from 'react'
+import React, { useState } from 'react';
 import { MoreHorizontal, ChevronDown } from 'lucide-react';
-import { HiOutlineTrash } from "react-icons/hi2";
-import { MdOutlineModeEdit } from "react-icons/md";
-
+import OrderDetailsModal from './order-modal/OrderModal'; 
 
 
 function RecentOrders() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+
   const users = [
     {
       id: 1,
@@ -19,13 +20,38 @@ function RecentOrders() {
       trackingCode: "۴۳۴۳۱۸۵۰۲۵",
     },
 
+    {
+      id: 2,
+      row: "2",
+      buyerName: "امیر حسین محمدی",
+      courseName: "دوره جامع UI/UX",
+      orderDate: "۱۴۰۲/۱۱/۲۵",
+      price: "۳,۵۰۰,۰۰۰ تومان",
+      paymentId: "۴۳۴۳۱۴۳۸",
+      trackingCode: "۴۳۴۳۱۸۵۰۲۵",
+    },
+   
   ];
 
+  const openModal = (user: any) => {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedUser(null);
+  };
 
   return (
     <div className='xl:px-20 mt-5'>
       <div className='flex items-center justify-between'>
-        <input type="text" className='w-[420px] mt-5 rounded-2xl border border-[#E0E0E0] px-4 py-3 text-gray-700 font-kalamehRegular text-base' placeholder='جست و جو  بر اساس نام دوره...' />
+        <input
+          type="text"
+          className='w-[420px] mt-5 rounded-2xl border border-[#E0E0E0] px-4 py-3 text-gray-700 font-kalamehRegular text-base'
+          placeholder='جست و جو  بر اساس نام دوره...'
+        />
       </div>
       <div className="w-full bg-white rounded-lg shadow-sm overflow-hidden mt-5 px-7 py-2">
         <div className="overflow-x-auto">
@@ -64,9 +90,12 @@ function RecentOrders() {
                   <td>{user.trackingCode}</td>
                   <td>
                     <div className='flex items-center justify-center gap-2'>
-                      <button className="text-gray-400 hover:text-gray-600">
+                      <button
+                        className="text-gray-400 hover:text-gray-600"
+                        onClick={() => openModal(user)}
+                      >
                         <MoreHorizontal className="w-5 h-5 text-[#36A8D9]" />
-                      </button> 
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -75,9 +104,12 @@ function RecentOrders() {
           </table>
         </div>
       </div>
-    </div>
 
-  )
+      {isModalOpen && selectedUser && (
+        <OrderDetailsModal user={selectedUser} onClose={closeModal} />
+      )}
+    </div>
+  );
 }
 
-export default RecentOrders
+export default RecentOrders;

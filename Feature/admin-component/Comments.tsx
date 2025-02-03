@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { MoreHorizontal, ChevronDown } from 'lucide-react';
-import { HiOutlineTrash } from "react-icons/hi2";
-import { MdOutlineModeEdit } from "react-icons/md";
-
-
+import CommentsModal from './comments-moadl/CommentsMoadl'; // Import the modal component
 
 function Comments() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const users = [
     {
@@ -17,51 +16,28 @@ function Comments() {
       commentStatus: "رد شده",
       mainPageStatus: "نمایش",
     },
-    {
-      id: 1,
-      row: "۱",
-      userName: "محمد حسینی",
-      score: "۵",
-      courseName: "دوره جامع UI/UX",
-      commentStatus: "رد شده",
-      mainPageStatus: "نمایش",
-    },
-    {
-      id: 1,
-      row: "۱",
-      userName: "محمد حسینی",
-      score: "۵",
-      courseName: "دوره جامع UI/UX",
-      commentStatus: "رد شده",
-      mainPageStatus: "نمایش",
-    },
-    {
-      id: 1,
-      row: "۱",
-      userName: "محمد حسینی",
-      score: "۵",
-      courseName: "دوره جامع UI/UX",
-      commentStatus: "رد شده",
-      mainPageStatus: "نمایش",
-    },
-    {
-      id: 1,
-      row: "۱",
-      userName: "محمد حسینی",
-      score: "۵",
-      courseName: "دوره جامع UI/UX",
-      commentStatus: "رد شده",
-      mainPageStatus: "نمایش",
-    },
-    
-
+    // سایر کاربران...
   ];
 
+  const openModal = (user: any) => {
+    setSelectedUser(user);
+    setIsModalOpen(true);
+  };
+
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedUser(null);
+  };
 
   return (
     <div className='mt-5 xl:px-20'>
       <div className='flex items-center justify-between'>
-        <input type="text" className='mt-5 w-[420px] rounded-2xl border border-[#E0E0E0] px-4 py-3 font-kalamehRegular text-base text-gray-700' placeholder='جست و جو  بر اساس نام دوره...' />
+        <input
+          type="text"
+          className='mt-5 w-[420px] rounded-2xl border border-[#E0E0E0] px-4 py-3 font-kalamehRegular text-base text-gray-700'
+          placeholder='جست و جو  بر اساس نام دوره...'
+        />
       </div>
       <div className="mt-5 w-full overflow-hidden rounded-lg bg-white px-7 py-2 shadow-sm">
         <div className="overflow-x-auto">
@@ -96,7 +72,10 @@ function Comments() {
                   <td>{user.mainPageStatus}</td>
                   <td>
                     <div className='flex items-center justify-center gap-2'>
-                      <button className="text-gray-400 hover:text-gray-600">
+                      <button
+                        className="text-gray-400 hover:text-gray-600"
+                        onClick={() => openModal(user)}
+                      >
                         <MoreHorizontal className="size-5 text-[#36A8D9]" />
                       </button>
                     </div>
@@ -107,8 +86,12 @@ function Comments() {
           </table>
         </div>
       </div>
+
+      {isModalOpen && selectedUser && (
+        <CommentsModal user={selectedUser} onClose={closeModal} />
+      )}
     </div>
-  )
+  );
 }
 
-export default Comments
+export default Comments;
