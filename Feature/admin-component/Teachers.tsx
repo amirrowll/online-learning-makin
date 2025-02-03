@@ -87,9 +87,6 @@ function Teachers() {
                 </div>
             </div>
         </div>
-
-
     );
 };
-
 export default Teachers;
