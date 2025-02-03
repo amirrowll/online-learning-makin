@@ -1,3 +1,5 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
+/* eslint-disable tailwindcss/classnames-order */
 import React from 'react';
 import { MoreHorizontal, ChevronDown } from 'lucide-react';
 
