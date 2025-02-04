@@ -1,10 +1,12 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
+/* eslint-disable tailwindcss/enforces-shorthand */
+/* eslint-disable tailwindcss/classnames-order */
 import { X, Upload, Trash2, Lock, Check, AlertCircle } from 'lucide-react';
 
 const CoursesModal = ({ course, onClose }: any) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto pt-14 ">
       <div className="max-w-4xl w-full rounded-lg bg-white shadow-sm">
-        {/* Header */}
         <div className="flex items-center justify-between p-4">
 
 
@@ -160,7 +162,6 @@ const CoursesModal = ({ course, onClose }: any) => {
                 </select>
               </div>
 
-              {/* Lessons */}
               <div className="p-4 space-y-3">
                 {[1, 2, 3].map((lesson) => (
                   <div key={lesson} className="flex items-center gap-4">
