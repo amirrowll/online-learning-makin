@@ -12,7 +12,7 @@ function Tickets() {
       row: "۱",
       userName: "محمد حسینی",
       ticketSubject: "پرداخت",
-      ticketStatus: "باز",
+      ticketStatus: "باز ",
       ticketId: "۶۷۳۶۹۱۰۸۵۴۹",
     },
   ];

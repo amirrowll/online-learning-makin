@@ -1,13 +1,12 @@
-/* eslint-disable tailwindcss/classnames-order */
-import React from 'react'
+import React, { useState } from 'react';
 import { MoreHorizontal, ChevronDown } from 'lucide-react';
 import { HiOutlineTrash } from "react-icons/hi2";
 import { MdOutlineModeEdit } from "react-icons/md";
-
-
-
+import CoursesModal from './courses-modal/CoursesModal'; // Import the modal component
 
 function Courses() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const users = [
     {
@@ -18,16 +17,27 @@ function Courses() {
       master: "حسین رفیعی",
       status: "فعال",
     },
-
+    // سایر دوره‌ها...
   ];
 
+  const openModal = (course: any) => {
+    setSelectedCourse(course);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCourse(null);
+  };
 
   return (
     <div className='xl:px-20 mt-5'>
       <div className='flex items-center justify-between'>
-        <input type="text" className='w-[420px] mt-5 rounded-2xl border border-[#E0E0E0] px-4 py-3 text-gray-700 font-kalamehRegular text-base' placeholder='جست و جو  بر اساس نام دوره...' />
-
-
+        <input
+          type="text"
+          className='w-[420px] mt-5 rounded-2xl border border-[#E0E0E0] px-4 py-3 text-gray-700 font-kalamehRegular text-base'
+          placeholder='جست و جو  بر اساس نام دوره...'
+        />
         <button className='bg-[#F28C28] text-white w-[192px] px-4 py-3 rounded-2xl font-kalamehSemiBold text-base'>
           ایجاد دوره +
         </button>
@@ -46,7 +56,6 @@ function Courses() {
                   <span className='flex items-center justify-center'> اساتید دوره <ChevronDown className='size-5 text-[#F28C28]' /> </span>
                 </th>
                 <th className="py-4 px-6 ">
-
                   <span className='flex items-center justify-center'> وضعیت  <ChevronDown className="size-5 text-[#F28C28]" /></span>
                 </th>
                 <th className="py-4 px-6 ">عملیات</th>
@@ -55,35 +64,34 @@ function Courses() {
             <tbody className='[&>tr>td]:text-lg [&>tr>td]:font-kalamehRegular [&>tr>td]:py-5 [&>tr>td]:px-6'>
               {users.map((user) => (
                 <tr key={user.id} className={user.id % 2 === 0 ? 'bg-[#F8F8F8]' : 'bg-white'}>
-                  <td >{user.row}</td>
-                  <td >{user.courseName}</td>
-                  <td >{user.category}</td>
-                  <td >{user.master}</td>
-                  <td >{user.status}</td>
-                  <td >
+                  <td>{user.row}</td>
+                  <td>{user.courseName}</td>
+                  <td>{user.category}</td>
+                  <td>{user.master}</td>
+                  <td>{user.status}</td>
+                  <td>
                     <div className='flex items-center justify-center gap-2'>
-
-                      <button>
+                      <button onClick={() => openModal(user)}>
                         <MdOutlineModeEdit className='size-7 text-[#36A8D9]' />
                       </button>
-
                       <button>
                         <HiOutlineTrash className='size-7 text-[#FA2523]' />
                       </button>
-
                     </div>
                   </td>
-
                 </tr>
-
               ))}
             </tbody>
           </table>
         </div>
       </div>
-    </div>
 
-  )
+      {/* Render the modal if isModalOpen is true */}
+      {isModalOpen && selectedCourse && (
+        <CoursesModal course={selectedCourse} onClose={closeModal} />
+      )}
+    </div>
+  );
 }
 
-export default Courses
+export default Courses;

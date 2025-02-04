@@ -9,18 +9,15 @@ import { PiUsersThree } from "react-icons/pi";
 import { BiCategoryAlt } from "react-icons/bi";
 
 export default function Page() {
-    const [activeItem, setActiveItem] = useState(0); 
+    const [activeItem, setActiveItem] = useState(0);
 
     const menuItems = [
-        { icon: <Layout className="size-5" />, title: "داشبورد", href: "#" },
-        { icon: <PiUsersThree size={24} />, title: "کاربران", href: "#" },
-        { icon: <Users2 className="size-5" />, title: "اساتید", href: "#" },
-        { icon: <BiCategoryAlt size={24} />, title: "دسته بندی ها", href: "#" },
-        { icon: <Course className="size-5" />, title: "دوره ها", href: "#" },
+        { icon: <Layout className="size-5" />, title: "پیشخوان", href: "#" },
+        { icon: <BookOpen className="size-5" />, title: "دوره های من", href: "#" },
         { icon: <BookOpen className="size-5" />, title: "سفارشات اخیر", href: "#" },
-        { icon: <MessageSquare className="size-5" />, title: "نظرات", href: "#" },
-        { icon: <BookOpen className="size-5" />, title: "تیکت ها", href: "#" },
-        { icon: <Settings className="size-5" />, title: "تنظیمات", href: "#" },
+        { icon: <BookOpen className="size-5" />, title: "دوره های محبوب", href: "#" },
+        { icon: <MessageSquare className="size-5" />, title: "تیکت ها", href: "#" },
+        { icon: <Users className="size-5" />, title: "جزئیات حساب", href: "#" },
     ];
 
     const handleItemClick = (index: number) => {
@@ -57,7 +54,7 @@ export default function Page() {
                                     <a
                                         href={item.href}
                                         className="flex items-center gap-3 p-3 rounded-lg text-gray-700 hover:bg-[#FEF3E9]"
-                                        onClick={() => handleItemClick(index)} 
+                                        onClick={() => handleItemClick(index)}
                                     >
                                         {item.icon}
                                         <span className='text-lg font-kalamehRegular'>{item.title}</span>
