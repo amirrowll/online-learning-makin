@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@iconify/react": "^5.2.0",
+    "@lottiefiles/dotlottie-react": "^0.12.3",
     "@react-icons/all-files": "^4.1.0",
     "flowbite-react": "^0.10.2",
     "lucide-react": "^0.474.0",
