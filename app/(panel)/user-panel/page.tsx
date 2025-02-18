@@ -5,12 +5,12 @@
 import React, { useState } from 'react';
 import { BookOpen, Layout, Users2, BookOpen as Course, MessageSquare, Settings, LogOut, Menu } from 'lucide-react';
 import { FaRegCircleUser } from "react-icons/fa6";
-import Dashboard from '@/Feature/admin-component/Dashboard';
 import MyCourses from '@/Feature/user-component/MyCourses';
 import PopularCourses from '@/Feature/user-component/PopularCourses';
 import AccountDetails from '@/Feature/user-component/AccountDetails';
 import MyTickets from '@/Feature/user-component/MyTickets';
 import MyOrders from '@/Feature/user-component/MyOrders';
+import Counter from '@/Feature/user-component/Counter';
 
 
 
@@ -19,7 +19,7 @@ export default function Page() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const menuItems = [
-        { icon: <Layout className="size-5" />, title: "پیشخوان", component: <Dashboard /> },
+        { icon: <Layout className="size-5" />, title: "پیشخوان", component: <Counter /> },
         { icon: <BookOpen className="size-5" />, title: "دوره های من", component: <MyCourses /> },
         { icon: <MessageSquare className="size-5" />, title: "سفارشات اخیر", component: <MyOrders /> },
         { icon: <Course className="size-5" />, title: "دوره های محبوب", component: <PopularCourses /> },
