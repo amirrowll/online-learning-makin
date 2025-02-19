@@ -1,5 +1,5 @@
 /* eslint-disable tailwindcss/classnames-order */
-import React, { useState } from 'react'; // Import useState
+import React, { useState, useEffect } from 'react'; // Import useState and useEffect
 import { GrEdit } from "react-icons/gr";
 import { GoTrash } from "react-icons/go";
 import { IoCheckboxOutline } from "react-icons/io5";
@@ -10,13 +10,25 @@ import CategoryModal from './catmodal/CategoryModal'; // Import CategoryModal
 
 function Categories() {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [categories, setCategories] = useState([]); // State for categories data
 
-  const categories = [
-    { id: 1, row: "۱", title: "Soft Skill مهارت های", coursesCount: "۰", date: "۱۴۰۳/۱۰/۰۵", isActive: false, },
-    { id: 2, row: "۲", title: " برنامه نویسی Backend ", coursesCount: "۲", date: "۱۴۰۳/۱۰/۰۵", isActive: true, },
-    { id: 3, row: "۳", title: " Design ", coursesCount: "۴", date: "۱۴۰۳/۱۰/۰۵", isActive: true, },
-    { id: 4, row: "۴", title: " برنامه نویسی Frontend ", coursesCount: "۰", date: "۱۴۰۳/۱۰/۰۵", isActive: true, }
-  ]
+  // Fetch categories data from API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('http://109.230.200.230:8585/api/Category/GetAllCategoties');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setCategories(data.result); // Set the categories data
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -58,15 +70,15 @@ function Categories() {
                   key={item.id}
                   className={index % 2 === 1 ? 'bg-[#F8F8F8]' : 'bg-white'}
                 >
-                  <td >{item.row}</td>
+                  <td >{index + 1}</td>
                   <td className='flex justify-center'>
-                    {item.title}
+                    {item.name}
                   </td>
-                  <td>{item.coursesCount}</td>
-                  <td >{item.date}</td>
+                  <td>{/* تعداد دوره‌ها */}</td>
+                  <td >{/* تاریخ ایجاد */}</td>
                   <td>
                     <div className="flex items-center justify-center">
-                      {item.isActive ? (
+                      {item.status === 1 ? (
                         <div className="flex items-center gap-1">
                           <IoCheckboxOutline className="size-[24px] text-[#2ECC71] " />
                           فعال
@@ -102,4 +114,4 @@ function Categories() {
   )
 }
 
-export default Categories
+export default Categories;
