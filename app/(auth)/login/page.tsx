@@ -45,7 +45,6 @@ export default function LoginPage() {
                     captchaInput: data.captchaInput,
                     captchaId: captchaId
                 }),
-                agent: new https.Agent({ rejectUnauthorized: false }) // فقط برای محیط توسعه
             });
 
             console.log('Response status:', response.status);

@@ -1,218 +1,343 @@
-/* eslint-disable tailwindcss/migration-from-tailwind-2 */
-/* eslint-disable tailwindcss/enforces-shorthand */
-/* eslint-disable tailwindcss/classnames-order */
-import { X, Upload, Trash2, Lock, Check, AlertCircle } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { X, Trash2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const CoursesModal = ({ course, onClose }: any) => {
+interface CourseFormData {
+  name: string;
+  category: string;
+  instructor: string;
+  price: number;
+  discount: number;
+  finalPrice: number;
+  description: string;
+  cover: FileList;
+  trailer: FileList;
+}
+
+interface CourseModalProps {
+  onClose: () => void;
+}
+
+interface Category {
+  id: string;
+  name: string;
+}
+
+export default function CoursesModal({ onClose }: CourseModalProps) {
+  const [coverPreview, setCoverPreview] = useState<string>('');
+  const [trailerPreview, setTrailerPreview] = useState<string>('');
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string>(''); // برای نمایش پیام خطا
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<CourseFormData>();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        // دریافت توکن از localStorage
+        const token = localStorage.getItem('authToken');
+        console.log('Token retrieved:', token); // دیباگ توکن
+
+        if (!token) {
+          throw new Error('No authentication token found. Please log in.');
+        }
+
+        // درخواست با axios
+        const response = await axios.get('https://109.230.200.230:8585/api/Category/GetAllCategoties', {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+
+        const data = response.data;
+        console.log('Full API Response:', data);
+
+        // بررسی و تنظیم دسته‌بندی‌ها
+        if (data.$values && Array.isArray(data.$values)) {
+          setCategories(data.$values);
+          console.log('Categories set from $values:', data.$values);
+        } else if (Array.isArray(data)) {
+          setCategories(data);
+          console.log('Categories set from direct array:', data);
+        } else {
+          console.warn('Unexpected API response format:', data);
+          setCategories([]);
+        }
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          // مدیریت خطاهای axios
+          if (error.response?.status === 401) {
+            setErrorMessage('احراز هویت ناموفق. لطفاً دوباره وارد شوید.');
+          } else {
+            setErrorMessage('خطایی در دریافت دسته‌بندی‌ها رخ داد.');
+          }
+          console.error('Axios error:', error.response?.status, error.response?.data);
+        } else {
+          // مدیریت خطاهای غیر axios
+          setErrorMessage(error instanceof Error ? error.message : 'خطای ناشناخته');
+          console.error('Error fetching categories:', error);
+        }
+        setCategories([]); // در صورت خطا، آرایه خالی
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  const onSubmit = (data: CourseFormData) => {
+    console.log('Form submitted with data:', data);
+    // Handle form submission here
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>, type: 'cover' | 'trailer') => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      if (type === 'cover') {
+        setCoverPreview(url);
+      } else {
+        setTrailerPreview(url);
+      }
+    }
+  };
+
+  const removeCover = () => {
+    setValue('cover', undefined as any);
+    setCoverPreview('');
+  };
+
+  const removeTrailer = () => {
+    setValue('trailer', undefined as any);
+    setTrailerPreview('');
+  };
+
+  console.log('Current categories state:', categories);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-y-auto pt-14 ">
-      <div className="max-w-4xl w-full rounded-lg bg-white shadow-sm">
-        <div className="flex items-center justify-between p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+      <div className="relative w-full max-w-3xl rounded-lg bg-white p-6">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+        >
+          <X size={24} />
+        </button>
 
+        <div className="mb-6 flex items-center space-x-4 rtl:space-x-reverse">
+          <div className={`size-3 rounded-full bg-orange-500`} />
+          <h2 className="text-xl font-semibold">وضعیت دوره: غیرفعال</h2>
+        </div>
 
-          <button className="text-gray-500 hover:text-gray-700" onClick={onClose}>
-            <X className="h-6 w-6" />
-          </button>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-3">
-              <span>وضعیت دوره:</span>
-              <div className="flex items-center gap-2">
-                <label className="flex items-center gap-2">
-                  <input type="radio" name="status" className="hidden" />
-                  <span className="w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center"></span>
-                  <span>فعال</span>
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="radio" name="status" className="hidden" defaultChecked />
-                  <span className="w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center bg-orange-500"></span>
-                  <span>غیرفعال</span>
-                </label>
+        {/* نمایش پیام خطا در صورت وجود */}
+        {errorMessage && (
+          <div className="mb-4 text-red-500 text-sm">{errorMessage}</div>
+        )}
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            {/* Course Name */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                نام دوره *
+              </label>
+              <input
+                type="text"
+                {...register('name', { required: true })}
+                className="w-full rounded-md border border-gray-300 p-2"
+                placeholder="دوره جامع UI/UX"
+              />
+            </div>
+
+            {/* Category */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                دسته‌بندی دوره *
+              </label>
+              <select
+                {...register('category', { required: true })}
+                className="w-full rounded-md border border-gray-300 p-2"
+              >
+                <option value="">لطفاً یک دسته‌بندی انتخاب کنید</option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Cover Upload */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                کاور دوره *
+              </label>
+              <div className="relative">
+                <input
+                  type="file"
+                  accept="image/*"
+                  {...register('cover', { required: !coverPreview })}
+                  onChange={(e) => handleFileChange(e, 'cover')}
+                  className="hidden"
+                  id="cover-upload"
+                />
+                {coverPreview ? (
+                  <div className="relative">
+                    <img
+                      src={coverPreview}
+                      alt="Cover preview"
+                      className="h-32 w-full rounded-md object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={removeCover}
+                      className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white hover:bg-red-600"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                ) : (
+                  <label
+                    htmlFor="cover-upload"
+                    className="flex h-32 w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-gray-300 hover:border-gray-400"
+                  >
+                    <span className="text-gray-600">انتخاب تصویر کاور</span>
+                  </label>
+                )}
               </div>
             </div>
-            <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 text-sm">
-              افزودن دوره
+
+            {/* Trailer Upload */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                تیزر دوره *
+              </label>
+              <div className="relative">
+                <input
+                  type="file"
+                  accept="video/*"
+                  {...register('trailer', { required: !trailerPreview })}
+                  onChange={(e) => handleFileChange(e, 'trailer')}
+                  className="hidden"
+                  id="trailer-upload"
+                />
+                {trailerPreview ? (
+                  <div className="relative">
+                    <video
+                      src={trailerPreview}
+                      controls
+                      className="h-32 w-full rounded-md object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={removeTrailer}
+                      className="absolute right-2 top-2 rounded-full bg-red-500 p-1 text-white hover:bg-red-600"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                ) : (
+                  <label
+                    htmlFor="trailer-upload"
+                    className="flex h-32 w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-gray-300 hover:border-gray-400"
+                  >
+                    <span className="text-gray-600">انتخاب ویدیو تیزر</span>
+                  </label>
+                )}
+              </div>
+            </div>
+
+            {/* Instructor */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                استاد دوره *
+              </label>
+              <select
+                {...register('instructor', { required: true })}
+                className="w-full rounded-md border border-gray-300 p-2"
+              >
+                <option value="محمد صادقی کیا">محمد صادقی کیا</option>
+                <option value="علی محمدی">علی محمدی</option>
+              </select>
+            </div>
+
+            {/* Price */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                قیمت *
+              </label>
+              <input
+                type="number"
+                {...register('price', { required: true })}
+                className="w-full rounded-md border border-gray-300 p-2"
+                placeholder="2,450,000 تومان"
+              />
+            </div>
+
+            {/* Discount Percentage */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                درصد تخفیف
+              </label>
+              <input
+                type="number"
+                {...register('discount')}
+                className="w-full rounded-md border border-gray-300 p-2"
+                placeholder="درصد تخفیف را وارد کنید"
+              />
+            </div>
+
+            {/* Final Price */}
+            <div>
+              <label className="mb-1 block text-sm font-medium text-gray-700">
+                قیمت بعد تخفیف
+              </label>
+              <input
+                type="number"
+                {...register('finalPrice')}
+                className="w-full rounded-md border border-gray-300 p-2"
+                placeholder="قیمت بعد از تخفیف را وارد کنید"
+              />
+            </div>
+          </div>
+
+          {/* Description */}
+          <div>
+            <label className="mb-1 block text-sm font-medium text-gray-700">
+              توضیحات دوره *
+            </label>
+            <textarea
+              {...register('description', { required: true })}
+              rows={4}
+              className="w-full rounded-md border border-gray-300 p-2"
+              placeholder="توضیحات دوره را وارد کنید..."
+            />
+          </div>
+
+          <div className="flex justify-end space-x-4 rtl:space-x-reverse">
+            <button
+              type="button"
+              onClick={onClose}
+              className="px-4 py-2 text-gray-600 hover:text-gray-800"
+            >
+              انصراف
+            </button>
+            <button
+              type="submit"
+              className="rounded-md bg-orange-500 px-4 py-2 text-white hover:bg-orange-600"
+            >
+              ذخیره دوره
             </button>
           </div>
-        </div>
-
-        {/* Form Content */}
-        <div className="p-6">
-          <div className="grid grid-cols-2 gap-6">
-            {/* Right Column */}
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm mb-1">
-                  کاور دوره <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    className="w-full border border-gray-200 rounded-lg p-2 pl-10 text-sm"
-                    placeholder="کاور دوره را بارگذاری کنید"
-                  />
-                  <Upload className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm mb-1">
-                  تیزر دوره <span className="text-red-500">*</span>
-                </label>
-                <div className="relative">
-                  <input
-                    type="text"
-                    className="w-full border border-gray-200 rounded-lg p-2 pl-10 text-sm"
-                    placeholder="تیزر دوره را بارگذاری کنید"
-                  />
-                  <Upload className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm mb-1">
-                  توضیحات دوره <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  className="w-full border border-gray-200 rounded-lg p-2 text-sm min-h-[120px]"
-                  placeholder="توضیحات دوره را وارد کنید"
-                />
-              </div>
-            </div>
-
-            {/* Left Column */}
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm mb-1">
-                  نام دوره <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="w-full border border-gray-200 rounded-lg p-2 text-sm"
-                  placeholder="نام دوره را وارد کنید"
-                />
-              </div>
-              <div>
-                <label className="block text-sm mb-1">
-                  دسته بندی دوره <span className="text-red-500">*</span>
-                </label>
-                <select className="w-full border border-gray-200 rounded-lg p-2 text-sm appearance-none bg-white">
-                  <option value="">دسته بندی دوره را انتخاب کنید</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm mb-1">
-                  استاد دوره <span className="text-red-500">*</span>
-                </label>
-                <select className="w-full border border-gray-200 rounded-lg p-2 text-sm appearance-none bg-white">
-                  <option value="">استاد دوره را انتخاب کنید</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm mb-1">
-                  قیمت <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  className="w-full border border-gray-200 rounded-lg p-2 text-sm"
-                  placeholder="قیمت دوره را وارد کنید"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm mb-1">درصد تخفیف</label>
-                  <input
-                    type="text"
-                    className="w-full border border-gray-200 rounded-lg p-2 text-sm"
-                    placeholder="درصد تخفیف را وارد کنید"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm mb-1">قیمت بعد تخفیف</label>
-                  <input
-                    type="text"
-                    className="w-full border border-gray-200 rounded-lg p-2 text-sm"
-                    placeholder="قیمت بعد از تخفیف را وارد کنید"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Sections */}
-          <div className="mt-8">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="font-medium">افزودن قسمت</h3>
-              <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 text-sm flex items-center gap-2">
-                <span>+</span>
-                <span>ایجاد فصل</span>
-              </button>
-            </div>
-
-            {/* Section 1 */}
-            <div className="border rounded-lg mb-4">
-              <div className="p-4 border-b bg-gray-50 rounded-t-lg flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                  <button className="text-orange-500 border border-orange-500 px-4 py-1 rounded text-sm">
-                    بارگذاری قسمت
-                  </button>
-                  <button className="text-red-500 border border-red-500 px-4 py-1 rounded text-sm">
-                    حذف فصل
-                  </button>
-                </div>
-                <select className="border border-gray-200 rounded p-1 text-sm min-w-[200px]">
-                  <option>فصل اول</option>
-                </select>
-              </div>
-
-              <div className="p-4 space-y-3">
-                {[1, 2, 3].map((lesson) => (
-                  <div key={lesson} className="flex items-center gap-4">
-                    <span className="text-gray-400">=</span>
-                    <Trash2 className="h-5 w-5 text-gray-400" />
-                    <Lock className="h-5 w-5 text-gray-400" />
-                    {lesson === 1 && <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-500">50</div>}
-                    {lesson === 2 && <Check className="h-6 w-6 text-green-500" />}
-                    {lesson === 3 && <AlertCircle className="h-6 w-6 text-red-500" />}
-                    <span className="text-sm">نام فایل: example.{lesson}.Mp4</span>
-                    <input
-                      type="text"
-                      className="flex-1 border border-gray-200 rounded p-1 text-sm"
-                      placeholder="نام قسمت را وارد کنید"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Section 2 */}
-            <div className="border rounded-lg">
-              <div className="p-4 border-b bg-gray-50 rounded-t-lg flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                  <button className="text-orange-500 border border-orange-500 px-4 py-1 rounded text-sm">
-                    بارگذاری قسمت
-                  </button>
-                  <button className="text-red-500 border border-red-500 px-4 py-1 rounded text-sm">
-                    حذف فصل
-                  </button>
-                </div>
-                <select className="border border-gray-200 rounded p-1 text-sm min-w-[200px]">
-                  <option>فصل دوم</option>
-                </select>
-              </div>
-              <div className="p-4">
-                <p className="text-sm text-gray-500 text-center">قسمتی موجود نیست!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="p-4 border-t">
-          <button className="bg-orange-500 text-white px-8 py-2 rounded-md hover:bg-orange-600">
-            ویرایش
-          </button>
-        </div>
+        </form>
       </div>
     </div>
   );
-};
-
-export default CoursesModal;
+}

@@ -31,7 +31,7 @@ export default function CategoryModal({ isOpen, onClose, initialData }: Category
 
     if (!isOpen) return null;
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: CategoryFormData) => {
         setServerError(null);
         const token = localStorage.getItem('token');
 
@@ -41,13 +41,12 @@ export default function CategoryModal({ isOpen, onClose, initialData }: Category
         }
 
         try {
-            console.log('Sending request with data:', {
-                name: data.name,
-                isActive: true
-            });
+            const endpoint = initialData
+                ? 'https://109.230.200.230:8585/api/Category/updateCategory'
+                : 'https://109.230.200.230:8585/api/Category/addCategory';
 
             const response = await axios.post(
-                'https://109.230.200.230:8585/api/Category/addCategory',
+                endpoint,
                 {
                     name: data.name,
                     isActive: true
@@ -63,11 +62,10 @@ export default function CategoryModal({ isOpen, onClose, initialData }: Category
                 }
             );
 
-            console.log('Response status:', response.status);
-            console.log('Response headers:', response.headers);
-            console.log('Response data:', response.data);
-
-            onClose();
+            if (response.status === 200) {
+                router.refresh(); // Refresh the page data
+                onClose(); // Close the modal
+            }
         } catch (error: any) {
             console.error('Error details:', {
                 message: error.message,
