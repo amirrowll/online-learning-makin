@@ -10,6 +10,7 @@ interface CategoryModalProps {
     onClose: () => void;
     initialData?: {
         name: string;
+        isActive: boolean;
     };
 }
 
@@ -90,45 +91,76 @@ export default function CategoryModal({ isOpen, onClose, initialData }: Category
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="w-full max-w-md rounded-lg bg-white p-6" dir="rtl">
-                <div className="mb-6 flex items-center justify-between">
-                    <h2 className="text-xl font-semibold text-orange-500">ایجاد دسته بندی</h2>
+            <div className="w-full max-w-[649px] rounded-lg bg-white p-6" dir="rtl">
+                <div className="mb-8 flex items-center justify-between">
+                    <div className='flex items-center gap-2'>
+                        <div className='size-6 rounded bg-[#F28C28]'></div>
+                        <h2 className='font-kalamehMedium text-2xl'>
+                            {initialData ? 'ویرایش دسته بندی' : 'ایجاد دسته بندی'}
+                        </h2>
+                    </div>
                     <button
                         onClick={onClose}
-                        className="text-gray-500 hover:text-gray-700"
+                        className="text-[#051116] hover:text-gray-700"
                     >
-                        <X className="size-5" />
+                        <X className="size-6" />
                     </button>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                    {/* Category Name */}
-                    <div>
-                        <label className="mb-1 block text-sm font-medium text-gray-700">
-                            نام دسته بندی
-                        </label>
-                        <input
-                            type="text"
-                            {...register("name", { required: "نام دسته بندی الزامی است" })}
-                            placeholder="نام دسته بندی را وارد کنید"
-                            className="w-full rounded-md border p-2"
-                        />
-                        {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
+                <form onSubmit={handleSubmit(onSubmit)} >
+                    <div className='flex items-start gap-[136px]'>
+                        <div>
+                            <label className="text-[18px] font-kalamehMedium text-black">
+                                نام دسته بندی
+                            </label>
+                            <input
+                                type="text"
+                                {...register("name", { required: "نام استاد الزامی است" })}
+                                placeholder="نام دسته بندی را وارد کنید"
+                                className="text-[#9E9E9E] font-kalamehRegular text-[16px] w-full rounded-lg border border-[#9E9E9E] pr-4 py-[11px] mt-4"
+                            />
+                            {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
+                        </div>
+                    </div>
+                    <div className='flex items-center justify-between mt-8 '>
+                        <div className='flex items-center'>
+                            <label className="text-[18px] font-kalamehMedium text-black">
+                                وضعیت دوره:
+                            </label>
+                            <div className="flex items-center gap-6 mr-2">
+                                <label className="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        value="true"
+                                        {...register("isActive")}
+                                        defaultChecked={initialData?.isActive === true}
+                                        className="size-6 border-[#000000] text-orange-500 focus:ring-orange-500"
+                                    />
+                                    <span className="text-[16px] font-kalamehRegular">فعال</span>
+                                </label>
+                                <label className="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        value="false"
+                                        {...register("isActive")}
+                                        defaultChecked={initialData?.isActive === false}
+                                        className="size-6 border-[#000000] text-orange-500 focus:ring-orange-500"
+                                    />
+                                    <span className="text-[16px] font-kalamehRegular">غیرفعال</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-end">
+                            <button
+                                type="submit"
+                                className="rounded-lg bg-[#F28C28] px-[28px] py-2 text-[#F9F9F9] transition-colors hover:bg-orange-600 text-[16px] font-kalamehSemiBold"
+                            >
+                                {initialData ? 'ویرایش دسته بندی' : 'افزودن دسته بندی'}
+                            </button>
+                        </div>
                     </div>
 
-                    {/* Server Error */}
-                    {serverError && (
-                        <p className="mt-4 text-sm text-red-500">{serverError}</p>
-                    )}
-
-                    <div className="flex justify-end">
-                        <button
-                            type="submit"
-                            className="rounded-md bg-orange-500 px-6 py-2 text-white transition-colors hover:bg-orange-600"
-                        >
-                            افزودن دسته بندی
-                        </button>
-                    </div>
                 </form>
             </div>
         </div>

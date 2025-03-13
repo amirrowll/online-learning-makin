@@ -128,7 +128,7 @@ function Teachers() {
       <div className='mt-5 flex items-center justify-between'>
         <input
           type="text"
-          className='w-[420px] rounded-2xl border border-[#E0E0E0] px-4 py-2 font-kalamehRegular text-base text-gray-700'
+          className='w-[420px] rounded-2xl shadow-sm border border-[#F2F2F2] px-10 py-[11px] font-kalamehRegular text-base text-[#949494]'
           placeholder='جست و جو  بر اساس نام استاد...'
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}

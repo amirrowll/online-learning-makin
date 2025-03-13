@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MoreHorizontal, ChevronDown } from 'lucide-react';
 import TicketsModal from './tickets-modal/TicketsModal';
-import TicketForm from './tickets-new/TicketForm'; // Import the new modal component
+import TicketForm from './tickets-new/TicketForm';
 
 function MyTickets() {
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);

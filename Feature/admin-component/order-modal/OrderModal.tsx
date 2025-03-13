@@ -37,8 +37,8 @@ const OrderDetailsModal = ({ user, onClose }: OrderDetailsModalProps) => {
                     </div>
                 </div>
 
-                <div className="p-6 space-y-16">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 text-sm">
+                <div className="p-6 space-y-16 flex flex-col items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-y-4 text-sm w-full">
                         <div className="flex items-center justify-between md:justify-start gap-2">
                             <span className="text-black text-lg font-kalamehMedium">نام کاربر:</span>
                             <span className='text-lg font-kalamehRegular'>{user.buyerName}</span>

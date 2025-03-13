@@ -71,16 +71,16 @@ function Categories() {
       <div className='mt-5 flex items-center justify-between'>
         <input 
           type="text" 
-          className='w-[420px] rounded-2xl border border-[#E0E0E0] px-4 py-2 font-kalamehRegular text-base text-gray-700' 
+          className='w-[420px] rounded-2xl border border-[#E0E0E0] px-4 py-[11px] font-kalamehRegular text-base text-gray-700' 
           placeholder='جست و جو بر اساس نام دوره...'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
           onClick={handleAddCategory}
-          className='flex w-[192px] items-center justify-center gap-1 rounded-lg bg-[#F28C28] px-6 py-2 font-kalamehSemiBold text-base text-white'
+          className='flex w-[192px] items-center justify-center gap-1 rounded-lg bg-[#F28C28] px-6 py-[11px] font-kalamehSemiBold text-base text-white'
         >
-          افزودن دسته بندی <HiOutlinePlus className='size-6 text-white' />
+          ایجاد دسته بندی <HiOutlinePlus className='size-6 text-white' />
         </button>
       </div>
       <div className="mt-5 h-[730px] w-full overflow-hidden rounded-lg bg-white px-7 pb-10 pt-2 shadow-sm">
